@@ -5,9 +5,13 @@ const {
   userSignIn,
   getUser,
 } = require('../controller/authController');
+const {
+  loginValidation,
+  registerValidation,
+} = require('../controller/authValidation');
 
-router.post('/signup', userSignUp);
-router.post('/signin', userSignIn);
+router.post('/signup', registerValidation, userSignUp);
+router.post('/signin', loginValidation, userSignIn);
 router.get('/id=:id', getUser);
 
 module.exports = router;

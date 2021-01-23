@@ -8,14 +8,15 @@ const {
   updateUserTweet,
   deleteUserTweet,
 } = require('../controller/tweetController');
+const { tweetValidation } = require('../controller/tweetValidation');
 
 router.get('', isAuthenticated, getUserTweets);
 
-router.post('/new', isAuthenticated, addNewUserTweet);
+router.post('/new', isAuthenticated, tweetValidation, addNewUserTweet);
 
 router.get('/id=:id', isAuthenticated, getUserTweetById);
 
-router.post('/id=:id', isAuthenticated, updateUserTweet);
+router.post('/id=:id', isAuthenticated, tweetValidation, updateUserTweet);
 
 router.delete('/id=:id', isAuthenticated, deleteUserTweet);
 
